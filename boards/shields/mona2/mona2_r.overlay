@@ -17,6 +17,13 @@
             ;
 };
 
+/ {
+    trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball>;
+        input-processors = <&zip_temp_layer 8 10000>;
+    };
+};
 
 &pinctrl {
     spi0_default: spi0_default {    //通常時(SPI通信中)のピン構成
@@ -78,4 +85,12 @@
             <&zip_scroll_scaler 1 5>;                           //スクロール量を1/4倍
     };
 
+};
+
+&zip_temp_layer {
+    excluded-positions = <
+        16 // J
+        17 // K
+        18 // l
+    >;
 };
